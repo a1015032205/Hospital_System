@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.BedMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Bed">
+    <id column="bed_id" jdbcType="INTEGER" property="bedId" />
+    <result column="bed_ward" jdbcType="INTEGER" property="bedWard" />
+    <result column="ward_state" jdbcType="INTEGER" property="wardState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    bed_id, bed_ward, ward_state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bed
+    where bed_id = #{bedId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bed
+    where bed_id = #{bedId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Bed">
+    insert into bed (bed_id, bed_ward, ward_state
+      )
+    values (#{bedId,jdbcType=INTEGER}, #{bedWard,jdbcType=INTEGER}, #{wardState,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Bed">
+    insert into bed
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bedId != null">
+        bed_id,
+      </if>
+      <if test="bedWard != null">
+        bed_ward,
+      </if>
+      <if test="wardState != null">
+        ward_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bedId != null">
+        #{bedId,jdbcType=INTEGER},
+      </if>
+      <if test="bedWard != null">
+        #{bedWard,jdbcType=INTEGER},
+      </if>
+      <if test="wardState != null">
+        #{wardState,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Bed">
+    update bed
+    <set>
+      <if test="bedWard != null">
+        bed_ward = #{bedWard,jdbcType=INTEGER},
+      </if>
+      <if test="wardState != null">
+        ward_state = #{wardState,jdbcType=INTEGER},
+      </if>
+    </set>
+    where bed_id = #{bedId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Bed">
+    update bed
+    set bed_ward = #{bedWard,jdbcType=INTEGER},
+      ward_state = #{wardState,jdbcType=INTEGER}
+    where bed_id = #{bedId,jdbcType=INTEGER}
+  </update>
+</mapper>

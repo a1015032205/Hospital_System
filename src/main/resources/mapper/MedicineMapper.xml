@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.MedicineMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Medicine">
+    <id column="medicine_id" jdbcType="INTEGER" property="medicineId" />
+    <result column="medicine_name" jdbcType="VARCHAR" property="medicineName" />
+    <result column="medicine_pharmacy" jdbcType="INTEGER" property="medicinePharmacy" />
+    <result column="medicine_function" jdbcType="VARCHAR" property="medicineFunction" />
+    <result column="medicine_warning" jdbcType="VARCHAR" property="medicineWarning" />
+    <result column="medicine_price" jdbcType="INTEGER" property="medicinePrice" />
+    <result column="medicine_number" jdbcType="INTEGER" property="medicineNumber" />
+    <result column="medicine_warning_number" jdbcType="INTEGER" property="medicineWarningNumber" />
+    <result column="medicine_img" jdbcType="VARCHAR" property="medicineImg" />
+    <result column="medicine_start_time" jdbcType="DATE" property="medicineStartTime" />
+    <result column="medicine_bir_time" jdbcType="DATE" property="medicineBirTime" />
+    <result column="medicine_life" jdbcType="VARCHAR" property="medicineLife" />
+    <result column="medicine_end_time" jdbcType="DATE" property="medicineEndTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    medicine_id, medicine_name, medicine_pharmacy, medicine_function, medicine_warning, 
+    medicine_price, medicine_number, medicine_warning_number, medicine_img, medicine_start_time, 
+    medicine_bir_time, medicine_life, medicine_end_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from medicine
+    where medicine_id = #{medicineId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from medicine
+    where medicine_id = #{medicineId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Medicine">
+    insert into medicine (medicine_id, medicine_name, medicine_pharmacy, 
+      medicine_function, medicine_warning, medicine_price, 
+      medicine_number, medicine_warning_number, 
+      medicine_img, medicine_start_time, medicine_bir_time, 
+      medicine_life, medicine_end_time)
+    values (#{medicineId,jdbcType=INTEGER}, #{medicineName,jdbcType=VARCHAR}, #{medicinePharmacy,jdbcType=INTEGER}, 
+      #{medicineFunction,jdbcType=VARCHAR}, #{medicineWarning,jdbcType=VARCHAR}, #{medicinePrice,jdbcType=INTEGER}, 
+      #{medicineNumber,jdbcType=INTEGER}, #{medicineWarningNumber,jdbcType=INTEGER}, 
+      #{medicineImg,jdbcType=VARCHAR}, #{medicineStartTime,jdbcType=DATE}, #{medicineBirTime,jdbcType=DATE}, 
+      #{medicineLife,jdbcType=VARCHAR}, #{medicineEndTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Medicine">
+    insert into medicine
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="medicineId != null">
+        medicine_id,
+      </if>
+      <if test="medicineName != null">
+        medicine_name,
+      </if>
+      <if test="medicinePharmacy != null">
+        medicine_pharmacy,
+      </if>
+      <if test="medicineFunction != null">
+        medicine_function,
+      </if>
+      <if test="medicineWarning != null">
+        medicine_warning,
+      </if>
+      <if test="medicinePrice != null">
+        medicine_price,
+      </if>
+      <if test="medicineNumber != null">
+        medicine_number,
+      </if>
+      <if test="medicineWarningNumber != null">
+        medicine_warning_number,
+      </if>
+      <if test="medicineImg != null">
+        medicine_img,
+      </if>
+      <if test="medicineStartTime != null">
+        medicine_start_time,
+      </if>
+      <if test="medicineBirTime != null">
+        medicine_bir_time,
+      </if>
+      <if test="medicineLife != null">
+        medicine_life,
+      </if>
+      <if test="medicineEndTime != null">
+        medicine_end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="medicineId != null">
+        #{medicineId,jdbcType=INTEGER},
+      </if>
+      <if test="medicineName != null">
+        #{medicineName,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinePharmacy != null">
+        #{medicinePharmacy,jdbcType=INTEGER},
+      </if>
+      <if test="medicineFunction != null">
+        #{medicineFunction,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineWarning != null">
+        #{medicineWarning,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinePrice != null">
+        #{medicinePrice,jdbcType=INTEGER},
+      </if>
+      <if test="medicineNumber != null">
+        #{medicineNumber,jdbcType=INTEGER},
+      </if>
+      <if test="medicineWarningNumber != null">
+        #{medicineWarningNumber,jdbcType=INTEGER},
+      </if>
+      <if test="medicineImg != null">
+        #{medicineImg,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineStartTime != null">
+        #{medicineStartTime,jdbcType=DATE},
+      </if>
+      <if test="medicineBirTime != null">
+        #{medicineBirTime,jdbcType=DATE},
+      </if>
+      <if test="medicineLife != null">
+        #{medicineLife,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineEndTime != null">
+        #{medicineEndTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Medicine">
+    update medicine
+    <set>
+      <if test="medicineName != null">
+        medicine_name = #{medicineName,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinePharmacy != null">
+        medicine_pharmacy = #{medicinePharmacy,jdbcType=INTEGER},
+      </if>
+      <if test="medicineFunction != null">
+        medicine_function = #{medicineFunction,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineWarning != null">
+        medicine_warning = #{medicineWarning,jdbcType=VARCHAR},
+      </if>
+      <if test="medicinePrice != null">
+        medicine_price = #{medicinePrice,jdbcType=INTEGER},
+      </if>
+      <if test="medicineNumber != null">
+        medicine_number = #{medicineNumber,jdbcType=INTEGER},
+      </if>
+      <if test="medicineWarningNumber != null">
+        medicine_warning_number = #{medicineWarningNumber,jdbcType=INTEGER},
+      </if>
+      <if test="medicineImg != null">
+        medicine_img = #{medicineImg,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineStartTime != null">
+        medicine_start_time = #{medicineStartTime,jdbcType=DATE},
+      </if>
+      <if test="medicineBirTime != null">
+        medicine_bir_time = #{medicineBirTime,jdbcType=DATE},
+      </if>
+      <if test="medicineLife != null">
+        medicine_life = #{medicineLife,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineEndTime != null">
+        medicine_end_time = #{medicineEndTime,jdbcType=DATE},
+      </if>
+    </set>
+    where medicine_id = #{medicineId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Medicine">
+    update medicine
+    set medicine_name = #{medicineName,jdbcType=VARCHAR},
+      medicine_pharmacy = #{medicinePharmacy,jdbcType=INTEGER},
+      medicine_function = #{medicineFunction,jdbcType=VARCHAR},
+      medicine_warning = #{medicineWarning,jdbcType=VARCHAR},
+      medicine_price = #{medicinePrice,jdbcType=INTEGER},
+      medicine_number = #{medicineNumber,jdbcType=INTEGER},
+      medicine_warning_number = #{medicineWarningNumber,jdbcType=INTEGER},
+      medicine_img = #{medicineImg,jdbcType=VARCHAR},
+      medicine_start_time = #{medicineStartTime,jdbcType=DATE},
+      medicine_bir_time = #{medicineBirTime,jdbcType=DATE},
+      medicine_life = #{medicineLife,jdbcType=VARCHAR},
+      medicine_end_time = #{medicineEndTime,jdbcType=DATE}
+    where medicine_id = #{medicineId,jdbcType=INTEGER}
+  </update>
+</mapper>

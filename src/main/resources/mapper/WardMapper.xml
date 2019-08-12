@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.WardMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Ward">
+    <id column="ward_id" jdbcType="INTEGER" property="wardId" />
+    <result column="ward_administration" jdbcType="INTEGER" property="wardAdministration" />
+    <result column="ward_number" jdbcType="INTEGER" property="wardNumber" />
+    <result column="ward_price" jdbcType="INTEGER" property="wardPrice" />
+    <result column="ward_state" jdbcType="INTEGER" property="wardState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ward_id, ward_administration, ward_number, ward_price, ward_state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ward
+    where ward_id = #{wardId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ward
+    where ward_id = #{wardId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Ward">
+    insert into ward (ward_id, ward_administration, ward_number, 
+      ward_price, ward_state)
+    values (#{wardId,jdbcType=INTEGER}, #{wardAdministration,jdbcType=INTEGER}, #{wardNumber,jdbcType=INTEGER}, 
+      #{wardPrice,jdbcType=INTEGER}, #{wardState,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Ward">
+    insert into ward
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wardId != null">
+        ward_id,
+      </if>
+      <if test="wardAdministration != null">
+        ward_administration,
+      </if>
+      <if test="wardNumber != null">
+        ward_number,
+      </if>
+      <if test="wardPrice != null">
+        ward_price,
+      </if>
+      <if test="wardState != null">
+        ward_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wardId != null">
+        #{wardId,jdbcType=INTEGER},
+      </if>
+      <if test="wardAdministration != null">
+        #{wardAdministration,jdbcType=INTEGER},
+      </if>
+      <if test="wardNumber != null">
+        #{wardNumber,jdbcType=INTEGER},
+      </if>
+      <if test="wardPrice != null">
+        #{wardPrice,jdbcType=INTEGER},
+      </if>
+      <if test="wardState != null">
+        #{wardState,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Ward">
+    update ward
+    <set>
+      <if test="wardAdministration != null">
+        ward_administration = #{wardAdministration,jdbcType=INTEGER},
+      </if>
+      <if test="wardNumber != null">
+        ward_number = #{wardNumber,jdbcType=INTEGER},
+      </if>
+      <if test="wardPrice != null">
+        ward_price = #{wardPrice,jdbcType=INTEGER},
+      </if>
+      <if test="wardState != null">
+        ward_state = #{wardState,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ward_id = #{wardId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Ward">
+    update ward
+    set ward_administration = #{wardAdministration,jdbcType=INTEGER},
+      ward_number = #{wardNumber,jdbcType=INTEGER},
+      ward_price = #{wardPrice,jdbcType=INTEGER},
+      ward_state = #{wardState,jdbcType=INTEGER}
+    where ward_id = #{wardId,jdbcType=INTEGER}
+  </update>
+</mapper>

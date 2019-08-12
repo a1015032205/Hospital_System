@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.PathographyMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Pathography">
+    <id column="pathography_id" jdbcType="CHAR" property="pathographyId" />
+    <result column="pathography_registration" jdbcType="CHAR" property="pathographyRegistration" />
+    <result column="pathography_time" jdbcType="TIMESTAMP" property="pathographyTime" />
+    <result column="pathography_str" jdbcType="VARCHAR" property="pathographyStr" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pathography_id, pathography_registration, pathography_time, pathography_str
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pathography
+    where pathography_id = #{pathographyId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from pathography
+    where pathography_id = #{pathographyId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Pathography">
+    insert into pathography (pathography_id, pathography_registration, 
+      pathography_time, pathography_str)
+    values (#{pathographyId,jdbcType=CHAR}, #{pathographyRegistration,jdbcType=CHAR}, 
+      #{pathographyTime,jdbcType=TIMESTAMP}, #{pathographyStr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Pathography">
+    insert into pathography
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pathographyId != null">
+        pathography_id,
+      </if>
+      <if test="pathographyRegistration != null">
+        pathography_registration,
+      </if>
+      <if test="pathographyTime != null">
+        pathography_time,
+      </if>
+      <if test="pathographyStr != null">
+        pathography_str,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pathographyId != null">
+        #{pathographyId,jdbcType=CHAR},
+      </if>
+      <if test="pathographyRegistration != null">
+        #{pathographyRegistration,jdbcType=CHAR},
+      </if>
+      <if test="pathographyTime != null">
+        #{pathographyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pathographyStr != null">
+        #{pathographyStr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Pathography">
+    update pathography
+    <set>
+      <if test="pathographyRegistration != null">
+        pathography_registration = #{pathographyRegistration,jdbcType=CHAR},
+      </if>
+      <if test="pathographyTime != null">
+        pathography_time = #{pathographyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pathographyStr != null">
+        pathography_str = #{pathographyStr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pathography_id = #{pathographyId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Pathography">
+    update pathography
+    set pathography_registration = #{pathographyRegistration,jdbcType=CHAR},
+      pathography_time = #{pathographyTime,jdbcType=TIMESTAMP},
+      pathography_str = #{pathographyStr,jdbcType=VARCHAR}
+    where pathography_id = #{pathographyId,jdbcType=CHAR}
+  </update>
+</mapper>

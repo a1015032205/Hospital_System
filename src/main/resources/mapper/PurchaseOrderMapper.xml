@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.PurchaseOrderMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.PurchaseOrder">
+    <id column="purchase_order_id" jdbcType="VARCHAR" property="purchaseOrderId" />
+    <result column="purchase_order_odd" jdbcType="VARCHAR" property="purchaseOrderOdd" />
+    <result column="purchase_order_medicine" jdbcType="INTEGER" property="purchaseOrderMedicine" />
+    <result column="purchase_order_staff" jdbcType="VARCHAR" property="purchaseOrderStaff" />
+    <result column="purchase_order_state" jdbcType="INTEGER" property="purchaseOrderState" />
+    <result column="purchase_order_number" jdbcType="INTEGER" property="purchaseOrderNumber" />
+    <result column="purchase_order_price" jdbcType="INTEGER" property="purchaseOrderPrice" />
+    <result column="purchase_order_time" jdbcType="TIMESTAMP" property="purchaseOrderTime" />
+    <result column="purchase_order_str" jdbcType="VARCHAR" property="purchaseOrderStr" />
+    <result column="purchase_order_paytime" jdbcType="TIMESTAMP" property="purchaseOrderPaytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    purchase_order_id, purchase_order_odd, purchase_order_medicine, purchase_order_staff, 
+    purchase_order_state, purchase_order_number, purchase_order_price, purchase_order_time, 
+    purchase_order_str, purchase_order_paytime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from purchase_order
+    where purchase_order_id = #{purchaseOrderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from purchase_order
+    where purchase_order_id = #{purchaseOrderId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.PurchaseOrder">
+    insert into purchase_order (purchase_order_id, purchase_order_odd, 
+      purchase_order_medicine, purchase_order_staff, 
+      purchase_order_state, purchase_order_number, 
+      purchase_order_price, purchase_order_time, 
+      purchase_order_str, purchase_order_paytime
+      )
+    values (#{purchaseOrderId,jdbcType=VARCHAR}, #{purchaseOrderOdd,jdbcType=VARCHAR}, 
+      #{purchaseOrderMedicine,jdbcType=INTEGER}, #{purchaseOrderStaff,jdbcType=VARCHAR}, 
+      #{purchaseOrderState,jdbcType=INTEGER}, #{purchaseOrderNumber,jdbcType=INTEGER}, 
+      #{purchaseOrderPrice,jdbcType=INTEGER}, #{purchaseOrderTime,jdbcType=TIMESTAMP}, 
+      #{purchaseOrderStr,jdbcType=VARCHAR}, #{purchaseOrderPaytime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.PurchaseOrder">
+    insert into purchase_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="purchaseOrderId != null">
+        purchase_order_id,
+      </if>
+      <if test="purchaseOrderOdd != null">
+        purchase_order_odd,
+      </if>
+      <if test="purchaseOrderMedicine != null">
+        purchase_order_medicine,
+      </if>
+      <if test="purchaseOrderStaff != null">
+        purchase_order_staff,
+      </if>
+      <if test="purchaseOrderState != null">
+        purchase_order_state,
+      </if>
+      <if test="purchaseOrderNumber != null">
+        purchase_order_number,
+      </if>
+      <if test="purchaseOrderPrice != null">
+        purchase_order_price,
+      </if>
+      <if test="purchaseOrderTime != null">
+        purchase_order_time,
+      </if>
+      <if test="purchaseOrderStr != null">
+        purchase_order_str,
+      </if>
+      <if test="purchaseOrderPaytime != null">
+        purchase_order_paytime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="purchaseOrderId != null">
+        #{purchaseOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseOrderOdd != null">
+        #{purchaseOrderOdd,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseOrderMedicine != null">
+        #{purchaseOrderMedicine,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseOrderStaff != null">
+        #{purchaseOrderStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseOrderState != null">
+        #{purchaseOrderState,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseOrderNumber != null">
+        #{purchaseOrderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseOrderPrice != null">
+        #{purchaseOrderPrice,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseOrderTime != null">
+        #{purchaseOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchaseOrderStr != null">
+        #{purchaseOrderStr,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseOrderPaytime != null">
+        #{purchaseOrderPaytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.PurchaseOrder">
+    update purchase_order
+    <set>
+      <if test="purchaseOrderOdd != null">
+        purchase_order_odd = #{purchaseOrderOdd,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseOrderMedicine != null">
+        purchase_order_medicine = #{purchaseOrderMedicine,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseOrderStaff != null">
+        purchase_order_staff = #{purchaseOrderStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseOrderState != null">
+        purchase_order_state = #{purchaseOrderState,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseOrderNumber != null">
+        purchase_order_number = #{purchaseOrderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseOrderPrice != null">
+        purchase_order_price = #{purchaseOrderPrice,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseOrderTime != null">
+        purchase_order_time = #{purchaseOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchaseOrderStr != null">
+        purchase_order_str = #{purchaseOrderStr,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseOrderPaytime != null">
+        purchase_order_paytime = #{purchaseOrderPaytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where purchase_order_id = #{purchaseOrderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.PurchaseOrder">
+    update purchase_order
+    set purchase_order_odd = #{purchaseOrderOdd,jdbcType=VARCHAR},
+      purchase_order_medicine = #{purchaseOrderMedicine,jdbcType=INTEGER},
+      purchase_order_staff = #{purchaseOrderStaff,jdbcType=VARCHAR},
+      purchase_order_state = #{purchaseOrderState,jdbcType=INTEGER},
+      purchase_order_number = #{purchaseOrderNumber,jdbcType=INTEGER},
+      purchase_order_price = #{purchaseOrderPrice,jdbcType=INTEGER},
+      purchase_order_time = #{purchaseOrderTime,jdbcType=TIMESTAMP},
+      purchase_order_str = #{purchaseOrderStr,jdbcType=VARCHAR},
+      purchase_order_paytime = #{purchaseOrderPaytime,jdbcType=TIMESTAMP}
+    where purchase_order_id = #{purchaseOrderId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.StaffRoleMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.StaffRole">
+    <id column="staff_role_id" jdbcType="VARCHAR" property="staffRoleId" />
+    <result column="staff_id" jdbcType="VARCHAR" property="staffId" />
+    <result column="role_id" jdbcType="VARCHAR" property="roleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    staff_role_id, staff_id, role_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from staff_role
+    where staff_role_id = #{staffRoleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from staff_role
+    where staff_role_id = #{staffRoleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.StaffRole">
+    insert into staff_role (staff_role_id, staff_id, role_id
+      )
+    values (#{staffRoleId,jdbcType=VARCHAR}, #{staffId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.StaffRole">
+    insert into staff_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="staffRoleId != null">
+        staff_role_id,
+      </if>
+      <if test="staffId != null">
+        staff_id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="staffRoleId != null">
+        #{staffRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="staffId != null">
+        #{staffId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.StaffRole">
+    update staff_role
+    <set>
+      <if test="staffId != null">
+        staff_id = #{staffId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where staff_role_id = #{staffRoleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.StaffRole">
+    update staff_role
+    set staff_id = #{staffId,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=VARCHAR}
+    where staff_role_id = #{staffRoleId,jdbcType=VARCHAR}
+  </update>
+</mapper>

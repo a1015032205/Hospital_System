@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.HospitalMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Hospital">
+    <id column="hospital_id" jdbcType="CHAR" property="hospitalId" />
+    <result column="hospital_name" jdbcType="VARCHAR" property="hospitalName" />
+    <result column="hospital_class" jdbcType="VARCHAR" property="hospitalClass" />
+    <result column="hospital_area" jdbcType="INTEGER" property="hospitalArea" />
+    <result column="hospital_add" jdbcType="VARCHAR" property="hospitalAdd" />
+    <result column="hospital_e" jdbcType="VARCHAR" property="hospitalE" />
+    <result column="hospital_n" jdbcType="VARCHAR" property="hospitalN" />
+    <result column="hospital_tel" jdbcType="CHAR" property="hospitalTel" />
+    <result column="hospital_email" jdbcType="VARCHAR" property="hospitalEmail" />
+    <result column="hospital_logo" jdbcType="VARCHAR" property="hospitalLogo" />
+    <result column="hospital_time" jdbcType="DATE" property="hospitalTime" />
+    <result column="hospital_path" jdbcType="VARCHAR" property="hospitalPath" />
+    <result column="hospital_introduce" jdbcType="VARCHAR" property="hospitalIntroduce" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    hospital_id, hospital_name, hospital_class, hospital_area, hospital_add, hospital_e, 
+    hospital_n, hospital_tel, hospital_email, hospital_logo, hospital_time, hospital_path, 
+    hospital_introduce
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hospital
+    where hospital_id = #{hospitalId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from hospital
+    where hospital_id = #{hospitalId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Hospital">
+    insert into hospital (hospital_id, hospital_name, hospital_class, 
+      hospital_area, hospital_add, hospital_e, 
+      hospital_n, hospital_tel, hospital_email, 
+      hospital_logo, hospital_time, hospital_path, 
+      hospital_introduce)
+    values (#{hospitalId,jdbcType=CHAR}, #{hospitalName,jdbcType=VARCHAR}, #{hospitalClass,jdbcType=VARCHAR}, 
+      #{hospitalArea,jdbcType=INTEGER}, #{hospitalAdd,jdbcType=VARCHAR}, #{hospitalE,jdbcType=VARCHAR}, 
+      #{hospitalN,jdbcType=VARCHAR}, #{hospitalTel,jdbcType=CHAR}, #{hospitalEmail,jdbcType=VARCHAR}, 
+      #{hospitalLogo,jdbcType=VARCHAR}, #{hospitalTime,jdbcType=DATE}, #{hospitalPath,jdbcType=VARCHAR}, 
+      #{hospitalIntroduce,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Hospital">
+    insert into hospital
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hospitalId != null">
+        hospital_id,
+      </if>
+      <if test="hospitalName != null">
+        hospital_name,
+      </if>
+      <if test="hospitalClass != null">
+        hospital_class,
+      </if>
+      <if test="hospitalArea != null">
+        hospital_area,
+      </if>
+      <if test="hospitalAdd != null">
+        hospital_add,
+      </if>
+      <if test="hospitalE != null">
+        hospital_e,
+      </if>
+      <if test="hospitalN != null">
+        hospital_n,
+      </if>
+      <if test="hospitalTel != null">
+        hospital_tel,
+      </if>
+      <if test="hospitalEmail != null">
+        hospital_email,
+      </if>
+      <if test="hospitalLogo != null">
+        hospital_logo,
+      </if>
+      <if test="hospitalTime != null">
+        hospital_time,
+      </if>
+      <if test="hospitalPath != null">
+        hospital_path,
+      </if>
+      <if test="hospitalIntroduce != null">
+        hospital_introduce,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hospitalId != null">
+        #{hospitalId,jdbcType=CHAR},
+      </if>
+      <if test="hospitalName != null">
+        #{hospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalClass != null">
+        #{hospitalClass,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalArea != null">
+        #{hospitalArea,jdbcType=INTEGER},
+      </if>
+      <if test="hospitalAdd != null">
+        #{hospitalAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalE != null">
+        #{hospitalE,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalN != null">
+        #{hospitalN,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalTel != null">
+        #{hospitalTel,jdbcType=CHAR},
+      </if>
+      <if test="hospitalEmail != null">
+        #{hospitalEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalLogo != null">
+        #{hospitalLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalTime != null">
+        #{hospitalTime,jdbcType=DATE},
+      </if>
+      <if test="hospitalPath != null">
+        #{hospitalPath,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalIntroduce != null">
+        #{hospitalIntroduce,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Hospital">
+    update hospital
+    <set>
+      <if test="hospitalName != null">
+        hospital_name = #{hospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalClass != null">
+        hospital_class = #{hospitalClass,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalArea != null">
+        hospital_area = #{hospitalArea,jdbcType=INTEGER},
+      </if>
+      <if test="hospitalAdd != null">
+        hospital_add = #{hospitalAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalE != null">
+        hospital_e = #{hospitalE,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalN != null">
+        hospital_n = #{hospitalN,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalTel != null">
+        hospital_tel = #{hospitalTel,jdbcType=CHAR},
+      </if>
+      <if test="hospitalEmail != null">
+        hospital_email = #{hospitalEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalLogo != null">
+        hospital_logo = #{hospitalLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalTime != null">
+        hospital_time = #{hospitalTime,jdbcType=DATE},
+      </if>
+      <if test="hospitalPath != null">
+        hospital_path = #{hospitalPath,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalIntroduce != null">
+        hospital_introduce = #{hospitalIntroduce,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hospital_id = #{hospitalId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Hospital">
+    update hospital
+    set hospital_name = #{hospitalName,jdbcType=VARCHAR},
+      hospital_class = #{hospitalClass,jdbcType=VARCHAR},
+      hospital_area = #{hospitalArea,jdbcType=INTEGER},
+      hospital_add = #{hospitalAdd,jdbcType=VARCHAR},
+      hospital_e = #{hospitalE,jdbcType=VARCHAR},
+      hospital_n = #{hospitalN,jdbcType=VARCHAR},
+      hospital_tel = #{hospitalTel,jdbcType=CHAR},
+      hospital_email = #{hospitalEmail,jdbcType=VARCHAR},
+      hospital_logo = #{hospitalLogo,jdbcType=VARCHAR},
+      hospital_time = #{hospitalTime,jdbcType=DATE},
+      hospital_path = #{hospitalPath,jdbcType=VARCHAR},
+      hospital_introduce = #{hospitalIntroduce,jdbcType=VARCHAR}
+    where hospital_id = #{hospitalId,jdbcType=CHAR}
+  </update>
+</mapper>

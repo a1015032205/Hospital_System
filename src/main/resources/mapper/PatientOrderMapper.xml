@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.PatientOrderMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.PatientOrder">
+    <id column="patient_order_id" jdbcType="VARCHAR" property="patientOrderId" />
+    <result column="patient_order_odd" jdbcType="VARCHAR" property="patientOrderOdd" />
+    <result column="patient_order_medicine" jdbcType="INTEGER" property="patientOrderMedicine" />
+    <result column="patient_order_staff" jdbcType="VARCHAR" property="patientOrderStaff" />
+    <result column="patient_order_state" jdbcType="INTEGER" property="patientOrderState" />
+    <result column="patient_order_number" jdbcType="INTEGER" property="patientOrderNumber" />
+    <result column="patient_order_price" jdbcType="INTEGER" property="patientOrderPrice" />
+    <result column="patient_order_time" jdbcType="TIMESTAMP" property="patientOrderTime" />
+    <result column="patient_order_str" jdbcType="VARCHAR" property="patientOrderStr" />
+    <result column="patient_order_paytime" jdbcType="TIMESTAMP" property="patientOrderPaytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    patient_order_id, patient_order_odd, patient_order_medicine, patient_order_staff, 
+    patient_order_state, patient_order_number, patient_order_price, patient_order_time, 
+    patient_order_str, patient_order_paytime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from patient_order
+    where patient_order_id = #{patientOrderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from patient_order
+    where patient_order_id = #{patientOrderId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.PatientOrder">
+    insert into patient_order (patient_order_id, patient_order_odd, 
+      patient_order_medicine, patient_order_staff, 
+      patient_order_state, patient_order_number, 
+      patient_order_price, patient_order_time, 
+      patient_order_str, patient_order_paytime)
+    values (#{patientOrderId,jdbcType=VARCHAR}, #{patientOrderOdd,jdbcType=VARCHAR}, 
+      #{patientOrderMedicine,jdbcType=INTEGER}, #{patientOrderStaff,jdbcType=VARCHAR}, 
+      #{patientOrderState,jdbcType=INTEGER}, #{patientOrderNumber,jdbcType=INTEGER}, 
+      #{patientOrderPrice,jdbcType=INTEGER}, #{patientOrderTime,jdbcType=TIMESTAMP}, 
+      #{patientOrderStr,jdbcType=VARCHAR}, #{patientOrderPaytime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.PatientOrder">
+    insert into patient_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="patientOrderId != null">
+        patient_order_id,
+      </if>
+      <if test="patientOrderOdd != null">
+        patient_order_odd,
+      </if>
+      <if test="patientOrderMedicine != null">
+        patient_order_medicine,
+      </if>
+      <if test="patientOrderStaff != null">
+        patient_order_staff,
+      </if>
+      <if test="patientOrderState != null">
+        patient_order_state,
+      </if>
+      <if test="patientOrderNumber != null">
+        patient_order_number,
+      </if>
+      <if test="patientOrderPrice != null">
+        patient_order_price,
+      </if>
+      <if test="patientOrderTime != null">
+        patient_order_time,
+      </if>
+      <if test="patientOrderStr != null">
+        patient_order_str,
+      </if>
+      <if test="patientOrderPaytime != null">
+        patient_order_paytime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="patientOrderId != null">
+        #{patientOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientOrderOdd != null">
+        #{patientOrderOdd,jdbcType=VARCHAR},
+      </if>
+      <if test="patientOrderMedicine != null">
+        #{patientOrderMedicine,jdbcType=INTEGER},
+      </if>
+      <if test="patientOrderStaff != null">
+        #{patientOrderStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="patientOrderState != null">
+        #{patientOrderState,jdbcType=INTEGER},
+      </if>
+      <if test="patientOrderNumber != null">
+        #{patientOrderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="patientOrderPrice != null">
+        #{patientOrderPrice,jdbcType=INTEGER},
+      </if>
+      <if test="patientOrderTime != null">
+        #{patientOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="patientOrderStr != null">
+        #{patientOrderStr,jdbcType=VARCHAR},
+      </if>
+      <if test="patientOrderPaytime != null">
+        #{patientOrderPaytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.PatientOrder">
+    update patient_order
+    <set>
+      <if test="patientOrderOdd != null">
+        patient_order_odd = #{patientOrderOdd,jdbcType=VARCHAR},
+      </if>
+      <if test="patientOrderMedicine != null">
+        patient_order_medicine = #{patientOrderMedicine,jdbcType=INTEGER},
+      </if>
+      <if test="patientOrderStaff != null">
+        patient_order_staff = #{patientOrderStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="patientOrderState != null">
+        patient_order_state = #{patientOrderState,jdbcType=INTEGER},
+      </if>
+      <if test="patientOrderNumber != null">
+        patient_order_number = #{patientOrderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="patientOrderPrice != null">
+        patient_order_price = #{patientOrderPrice,jdbcType=INTEGER},
+      </if>
+      <if test="patientOrderTime != null">
+        patient_order_time = #{patientOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="patientOrderStr != null">
+        patient_order_str = #{patientOrderStr,jdbcType=VARCHAR},
+      </if>
+      <if test="patientOrderPaytime != null">
+        patient_order_paytime = #{patientOrderPaytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where patient_order_id = #{patientOrderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.PatientOrder">
+    update patient_order
+    set patient_order_odd = #{patientOrderOdd,jdbcType=VARCHAR},
+      patient_order_medicine = #{patientOrderMedicine,jdbcType=INTEGER},
+      patient_order_staff = #{patientOrderStaff,jdbcType=VARCHAR},
+      patient_order_state = #{patientOrderState,jdbcType=INTEGER},
+      patient_order_number = #{patientOrderNumber,jdbcType=INTEGER},
+      patient_order_price = #{patientOrderPrice,jdbcType=INTEGER},
+      patient_order_time = #{patientOrderTime,jdbcType=TIMESTAMP},
+      patient_order_str = #{patientOrderStr,jdbcType=VARCHAR},
+      patient_order_paytime = #{patientOrderPaytime,jdbcType=TIMESTAMP}
+    where patient_order_id = #{patientOrderId,jdbcType=VARCHAR}
+  </update>
+</mapper>

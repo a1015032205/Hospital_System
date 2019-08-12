@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.RegistrationMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Registration">
+    <id column="registration_id" jdbcType="CHAR" property="registrationId" />
+    <result column="registration_number" jdbcType="INTEGER" property="registrationNumber" />
+    <result column="registration_patient" jdbcType="CHAR" property="registrationPatient" />
+    <result column="registration_disease" jdbcType="INTEGER" property="registrationDisease" />
+    <result column="registration_staff" jdbcType="CHAR" property="registrationStaff" />
+    <result column="registration_disease_time" jdbcType="DATE" property="registrationDiseaseTime" />
+    <result column="registration_start_hospital_time" jdbcType="DATE" property="registrationStartHospitalTime" />
+    <result column="registration_bed" jdbcType="INTEGER" property="registrationBed" />
+    <result column="registration_product" jdbcType="INTEGER" property="registrationProduct" />
+    <result column="registration_end_hospital_time" jdbcType="DATE" property="registrationEndHospitalTime" />
+    <result column="registration_str" jdbcType="VARCHAR" property="registrationStr" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    registration_id, registration_number, registration_patient, registration_disease, 
+    registration_staff, registration_disease_time, registration_start_hospital_time, 
+    registration_bed, registration_product, registration_end_hospital_time, registration_str
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from registration
+    where registration_id = #{registrationId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from registration
+    where registration_id = #{registrationId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Registration">
+    insert into registration (registration_id, registration_number, 
+      registration_patient, registration_disease, 
+      registration_staff, registration_disease_time, registration_start_hospital_time, 
+      registration_bed, registration_product, registration_end_hospital_time, 
+      registration_str)
+    values (#{registrationId,jdbcType=CHAR}, #{registrationNumber,jdbcType=INTEGER}, 
+      #{registrationPatient,jdbcType=CHAR}, #{registrationDisease,jdbcType=INTEGER}, 
+      #{registrationStaff,jdbcType=CHAR}, #{registrationDiseaseTime,jdbcType=DATE}, #{registrationStartHospitalTime,jdbcType=DATE}, 
+      #{registrationBed,jdbcType=INTEGER}, #{registrationProduct,jdbcType=INTEGER}, #{registrationEndHospitalTime,jdbcType=DATE}, 
+      #{registrationStr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Registration">
+    insert into registration
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="registrationId != null">
+        registration_id,
+      </if>
+      <if test="registrationNumber != null">
+        registration_number,
+      </if>
+      <if test="registrationPatient != null">
+        registration_patient,
+      </if>
+      <if test="registrationDisease != null">
+        registration_disease,
+      </if>
+      <if test="registrationStaff != null">
+        registration_staff,
+      </if>
+      <if test="registrationDiseaseTime != null">
+        registration_disease_time,
+      </if>
+      <if test="registrationStartHospitalTime != null">
+        registration_start_hospital_time,
+      </if>
+      <if test="registrationBed != null">
+        registration_bed,
+      </if>
+      <if test="registrationProduct != null">
+        registration_product,
+      </if>
+      <if test="registrationEndHospitalTime != null">
+        registration_end_hospital_time,
+      </if>
+      <if test="registrationStr != null">
+        registration_str,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="registrationId != null">
+        #{registrationId,jdbcType=CHAR},
+      </if>
+      <if test="registrationNumber != null">
+        #{registrationNumber,jdbcType=INTEGER},
+      </if>
+      <if test="registrationPatient != null">
+        #{registrationPatient,jdbcType=CHAR},
+      </if>
+      <if test="registrationDisease != null">
+        #{registrationDisease,jdbcType=INTEGER},
+      </if>
+      <if test="registrationStaff != null">
+        #{registrationStaff,jdbcType=CHAR},
+      </if>
+      <if test="registrationDiseaseTime != null">
+        #{registrationDiseaseTime,jdbcType=DATE},
+      </if>
+      <if test="registrationStartHospitalTime != null">
+        #{registrationStartHospitalTime,jdbcType=DATE},
+      </if>
+      <if test="registrationBed != null">
+        #{registrationBed,jdbcType=INTEGER},
+      </if>
+      <if test="registrationProduct != null">
+        #{registrationProduct,jdbcType=INTEGER},
+      </if>
+      <if test="registrationEndHospitalTime != null">
+        #{registrationEndHospitalTime,jdbcType=DATE},
+      </if>
+      <if test="registrationStr != null">
+        #{registrationStr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Registration">
+    update registration
+    <set>
+      <if test="registrationNumber != null">
+        registration_number = #{registrationNumber,jdbcType=INTEGER},
+      </if>
+      <if test="registrationPatient != null">
+        registration_patient = #{registrationPatient,jdbcType=CHAR},
+      </if>
+      <if test="registrationDisease != null">
+        registration_disease = #{registrationDisease,jdbcType=INTEGER},
+      </if>
+      <if test="registrationStaff != null">
+        registration_staff = #{registrationStaff,jdbcType=CHAR},
+      </if>
+      <if test="registrationDiseaseTime != null">
+        registration_disease_time = #{registrationDiseaseTime,jdbcType=DATE},
+      </if>
+      <if test="registrationStartHospitalTime != null">
+        registration_start_hospital_time = #{registrationStartHospitalTime,jdbcType=DATE},
+      </if>
+      <if test="registrationBed != null">
+        registration_bed = #{registrationBed,jdbcType=INTEGER},
+      </if>
+      <if test="registrationProduct != null">
+        registration_product = #{registrationProduct,jdbcType=INTEGER},
+      </if>
+      <if test="registrationEndHospitalTime != null">
+        registration_end_hospital_time = #{registrationEndHospitalTime,jdbcType=DATE},
+      </if>
+      <if test="registrationStr != null">
+        registration_str = #{registrationStr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where registration_id = #{registrationId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Registration">
+    update registration
+    set registration_number = #{registrationNumber,jdbcType=INTEGER},
+      registration_patient = #{registrationPatient,jdbcType=CHAR},
+      registration_disease = #{registrationDisease,jdbcType=INTEGER},
+      registration_staff = #{registrationStaff,jdbcType=CHAR},
+      registration_disease_time = #{registrationDiseaseTime,jdbcType=DATE},
+      registration_start_hospital_time = #{registrationStartHospitalTime,jdbcType=DATE},
+      registration_bed = #{registrationBed,jdbcType=INTEGER},
+      registration_product = #{registrationProduct,jdbcType=INTEGER},
+      registration_end_hospital_time = #{registrationEndHospitalTime,jdbcType=DATE},
+      registration_str = #{registrationStr,jdbcType=VARCHAR}
+    where registration_id = #{registrationId,jdbcType=CHAR}
+  </update>
+</mapper>

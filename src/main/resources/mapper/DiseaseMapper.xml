@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.DiseaseMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Disease">
+    <id column="disease_id" jdbcType="INTEGER" property="diseaseId" />
+    <result column="disease_administration" jdbcType="INTEGER" property="diseaseAdministration" />
+    <result column="disease_name" jdbcType="VARCHAR" property="diseaseName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    disease_id, disease_administration, disease_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from disease
+    where disease_id = #{diseaseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from disease
+    where disease_id = #{diseaseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Disease">
+    insert into disease (disease_id, disease_administration, 
+      disease_name)
+    values (#{diseaseId,jdbcType=INTEGER}, #{diseaseAdministration,jdbcType=INTEGER}, 
+      #{diseaseName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Disease">
+    insert into disease
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="diseaseId != null">
+        disease_id,
+      </if>
+      <if test="diseaseAdministration != null">
+        disease_administration,
+      </if>
+      <if test="diseaseName != null">
+        disease_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="diseaseId != null">
+        #{diseaseId,jdbcType=INTEGER},
+      </if>
+      <if test="diseaseAdministration != null">
+        #{diseaseAdministration,jdbcType=INTEGER},
+      </if>
+      <if test="diseaseName != null">
+        #{diseaseName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Disease">
+    update disease
+    <set>
+      <if test="diseaseAdministration != null">
+        disease_administration = #{diseaseAdministration,jdbcType=INTEGER},
+      </if>
+      <if test="diseaseName != null">
+        disease_name = #{diseaseName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where disease_id = #{diseaseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Disease">
+    update disease
+    set disease_administration = #{diseaseAdministration,jdbcType=INTEGER},
+      disease_name = #{diseaseName,jdbcType=VARCHAR}
+    where disease_id = #{diseaseId,jdbcType=INTEGER}
+  </update>
+</mapper>

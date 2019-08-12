@@ -1,0 +1,103 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /hospital
+    session:
+      timeout: 30
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  thymeleaf:
+    cache: false
+    encoding: utf-8
+    mode: LEGACYHTML5
+  datasource:
+    url: jdbc:mysql://localhost:3306/hospital?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&nullCatalogMeansCurrent=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 5268413
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    filters:
+      commons-log:
+        connection-logger-name: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  activiti:
+    database-schema: update #数据activiti数据表已存在继续使用，不存在，则创建
+    check-process-definitions: false #不检测bpmn文件是否存在
+  servlet: #流程图是以文件上传的方式，上传到服务器，此处进行文件上传的相关设置
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+  # 可以选择使用@DateTimeFormat
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+  # 可以选择使用@JsonFormat
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  messages:
+    basename: i18n.login
+  http:
+    encoding:
+      enabled: true
+      charset: utf-8
+      force: true
+  mail:
+    username: 1015032205.qq.com
+    password: fgzmfafznivybdjb
+    host: smtp.qq.com
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+  redis:
+#    cluster:
+#      nodes: 192.168.40.128:7001,192.168.40.128:7002,192.168.40.128:7003,192.168.40.128:7004,192.168.40.128:7005,192.168.40.128:7006,192.168.40.128:7007
+    database: 0
+    host: 192.168.40.128
+    port: 6379
+    jedis:
+      pool:
+        max-wait: 3000
+        max-idle: 20
+        max-active: 30
+        min-idle: 5
+mybatis:
+  mapper-locations: mapper/*Mapper.xml
+  type-aliases-package: org.java.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+    cache-enabled: false
+    call-setters-on-nulls: true
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+# 后台监控的登录用户名和密码
+druid:
+  loginUsername: root
+  loginPassword: 5268413
+activiti:
+  processDefinitionKey: leave
+logging:
+  level:
+    com.eth.wallet.mapper: debug
+

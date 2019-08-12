@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.AdministrationMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Administration">
+    <id column="administration_id" jdbcType="INTEGER" property="administrationId" />
+    <result column="administration_name" jdbcType="VARCHAR" property="administrationName" />
+    <result column="administration_department" jdbcType="INTEGER" property="administrationDepartment" />
+    <result column="administration_add" jdbcType="VARCHAR" property="administrationAdd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    administration_id, administration_name, administration_department, administration_add
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from administration
+    where administration_id = #{administrationId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from administration
+    where administration_id = #{administrationId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Administration">
+    insert into administration (administration_id, administration_name, 
+      administration_department, administration_add
+      )
+    values (#{administrationId,jdbcType=INTEGER}, #{administrationName,jdbcType=VARCHAR}, 
+      #{administrationDepartment,jdbcType=INTEGER}, #{administrationAdd,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Administration">
+    insert into administration
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="administrationId != null">
+        administration_id,
+      </if>
+      <if test="administrationName != null">
+        administration_name,
+      </if>
+      <if test="administrationDepartment != null">
+        administration_department,
+      </if>
+      <if test="administrationAdd != null">
+        administration_add,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="administrationId != null">
+        #{administrationId,jdbcType=INTEGER},
+      </if>
+      <if test="administrationName != null">
+        #{administrationName,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationDepartment != null">
+        #{administrationDepartment,jdbcType=INTEGER},
+      </if>
+      <if test="administrationAdd != null">
+        #{administrationAdd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Administration">
+    update administration
+    <set>
+      <if test="administrationName != null">
+        administration_name = #{administrationName,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationDepartment != null">
+        administration_department = #{administrationDepartment,jdbcType=INTEGER},
+      </if>
+      <if test="administrationAdd != null">
+        administration_add = #{administrationAdd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where administration_id = #{administrationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Administration">
+    update administration
+    set administration_name = #{administrationName,jdbcType=VARCHAR},
+      administration_department = #{administrationDepartment,jdbcType=INTEGER},
+      administration_add = #{administrationAdd,jdbcType=VARCHAR}
+    where administration_id = #{administrationId,jdbcType=INTEGER}
+  </update>
+</mapper>
