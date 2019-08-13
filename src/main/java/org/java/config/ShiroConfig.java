@@ -7,7 +7,7 @@ import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.java.shiro.MyRealm;
+import org.java.realm.MyRealm;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -36,16 +36,18 @@ public class ShiroConfig {
         //指定，如果要使用的安全管理器
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         //指定，如果用户没有登录，发出什么请求名称，通过控制器，进行到登录界面
-        shiroFilterFactoryBean.setLoginUrl("/login");
+       // shiroFilterFactoryBean.setLoginUrl("/index");
 
         //指定shiro如何处理拦截的请求名称
         Map filterChainDefinitionsMap = new LinkedHashMap();
-        filterChainDefinitionsMap.put("/logout", "logout");
+       /* filterChainDefinitionsMap.put("/logout", "logout");
         filterChainDefinitionsMap.put("/favicon.ico", "anon");
         filterChainDefinitionsMap.put("/js/**", "anon");
-        filterChainDefinitionsMap.put("/css/**", "anon");
-        filterChainDefinitionsMap.put("/img/**", "anon");
-        filterChainDefinitionsMap.put("/**", "authc");
+        filterChainDefinitionsMap.put("/css/**", "anon");*/
+        filterChainDefinitionsMap.put("/**", "anon");
+      //  filterChainDefinitionsMap.put("/index", "anon");
+
+       // filterChainDefinitionsMap.put("", "authc");
 
         //把拦截规则，关联到ShiroFilterFactoryBean对象中
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionsMap);

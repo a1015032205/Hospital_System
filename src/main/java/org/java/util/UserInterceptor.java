@@ -16,13 +16,14 @@ import java.util.Map;
 public class UserInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        Map<String, Object> user = (Map<String, Object>) request.getSession().getAttribute("user");
+       /* Map<String, Object> user = (Map<String, Object>) request.getSession().getAttribute("user");
         if (user == null) {
             response.sendRedirect("/index");
             return false;
         } else {
             return true;
-        }
+        }*/
+       return true;
     }
 
     @Override

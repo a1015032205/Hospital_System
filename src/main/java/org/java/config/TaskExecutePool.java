@@ -10,6 +10,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * @Author 秒度
  * @Date 2019/7/21 0021 14:58
+ * 创建线程池
  */
 
 @Configuration

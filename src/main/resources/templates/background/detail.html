@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{'/layui/css/layui.css'}" type="text/css" rel="stylesheet">
+</head>
+<body style="margin-left: 70px;margin-top: 10px">
+<Br>
+<form class="layui-form" id="addFrm"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-inline">
+            <input type="text" name="name" placeholder="请输入姓名"  required  lay-verify="required" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">性别</label>
+        <div class="layui-input-block">
+            <input type="radio" name="gender" value="男" title="男" checked>
+            <input type="radio" name="gender" value="女" title="女">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">班级</label>
+        <div class="layui-input-inline">
+            <input type="text" name="clazz" placeholder="请输入班级" required  lay-verify="required" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">成绩</label>
+        <div class="layui-input-inline">
+            <input type="number" name="score" placeholder="请输入成绩" required autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">生日</label>
+        <div class="layui-input-inline">
+            <input type="date" name="bir"  autocomplete="off" required class="layui-input">
+        </div>
+    </div>
+    <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+</form>
+</body>
+<script type="text/javascript" th:src="@{'/layui/layui.js'}"></script>
+<script type="text/javascript" th:src="@{'/my.js'}"></script>
+
+</html>
