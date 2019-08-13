@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css" rel="stylesheet">
+        #div2 {
+            position: absolute;
+            left: 43%;
+            top: 80%;
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+
+
+    </style>
+
+</head>
+<body style="background-image: url(../images/404.jpg);margin: 0px">
+<div id="div" style="background-image: url(../images/404.jpg)">
+    <center>
+        <div id="div2">
+            <a onclick="history.back()">返回上级</a>
+            &nbsp; &nbsp; &nbsp; &nbsp;
+            <a th:href="@{'/jump/index'}">返回主界面</a>
+        </div>
+    </center>
+
+    <img th:src="@{'/images/404.jpg'}">
+</div>
+</body>
+</html>

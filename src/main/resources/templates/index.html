@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>首页</title>
 
-    <link rel="stylesheet" href="css/normalize.css" type="text/css"/>
-    <link rel="stylesheet" href="css/index.css" type="text/css"/>
+    <link rel="stylesheet" th:href="@{'/css/normalize.css'}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{'/css/index.css'}" type="text/css"/>
 
 </head>
 <body>
@@ -17,9 +17,9 @@
         <div class="BaseMark">
             <ul>
                 <li class="first"><a href="SiteMap.html">站点地图</a></li>
-                <li><a href="Complain.html">院长(信访)信箱</a></li>
-                <li><a href="https://61.163.73.190/por/login_psw.csp" target="_blank">内部OA</a></li>
-                <li><a href="news.html">人才招聘</a></li>
+                <li><a th:href="@{'/1/222'}">院长(信访)信箱</a></li>
+                <li><a th:href="@{'/1/123'}">内部OA</a></li>
+                <li><a th:href="@{'/jump/news'}">人才招聘</a></li>
                 <li><a href="Office-71.html">人事管理</a></li>
                 <li><a href="History.html">网上院史馆</a></li>
                 <li><a href="Message.html">在线留言</a></li>
@@ -32,8 +32,9 @@
             </div>
         </div>
     </div>
-    <div class="BaseMark logoBase"><a href="Index.html"><img src="images/logo.jpg" class="load" width="227"
+    <div class="BaseMark logoBase"><a href="Index.html"><img th:src="@{|/images/logo.jpg|}" class="load" width="227"
                                                              height="47"/></a>
+
         <div class="searchBase">
             <div class="itemBase">
                 <div class="divType" data-state="0">全站内容</div>
@@ -245,7 +246,7 @@
                                         <dd><em>汽车客运站</em>
                                             <p>40路</p></dd>
                                     </dl>
-                                    <a href="http://map.baidu.com/ target=' _blank'">电子地图</a>
+                                    <a href="http//map.baidu.com/ target=' _blank'">电子地图</a>
                                 </div>
                                 <div class="clear"></div>
                             </div>
@@ -429,7 +430,7 @@
                                         <li class="first"><a href="NoticeList-110.html" title="教育动态">教育动态<span>进入</span></a>
                                         </li>
 
-                                        <li><a href="http://yjsc.hnsrmyy.net/index.html"
+                                        <li><a href="http//yjsc.hnsrmyy.net/index.html"
                                                title="研究生教育">研究生教育<span>进入</span></a></li>
 
                                         <li><a href="NoticeList-112.html" title="本科生教育">本科生教育<span>进入</span></a></li>
@@ -831,24 +832,24 @@
 <section class="bannerBase BaseMark">
     <div class="Banners">
         <ul class="AnimUl">
-            <li><a href="http://www.hnsrmyy.net/NewsDetail-8464.html" title="院党委举行学习党的十八届六中全会精神和 省十次党代会精神专题辅导"><img
+            <li><a href="www.hnsrmyy.net/NewsDetail-8464.html" title="院党委举行学习党的十八届六中全会精神和 省十次党代会精神专题辅导"><img
                     src="uploadfiles/thumb/201607271939462.JPG" alt="院党委举行学习党的十八届六中全会精神和 省十次党代会精神专题辅导"/></a></li>
 
-            <li><a href="http://www.hnsrmyy.net/NewsDetail-8476.html" title="2016山西省眼科医师大会开启眼科发展新篇章"><img
+            <li><a href="www.hnsrmyy.net/NewsDetail-8476.html" title="2016山西省眼科医师大会开启眼科发展新篇章"><img
                     src="uploadfiles/thumb/201607271939462.jpg" alt="2016山西省眼科医师大会开启眼科发展新篇章"/></a></li>
 
-            <li><a href="http://www.hnsrmyy.net/NewsDetail-8470.html" title="立足中原 开放合作
+            <li><a href="www.hnsrmyy.net/NewsDetail-8470.html" title="立足中原 开放合作
 “直通梅奥国际诊疗中心中原中心”启动"><img src="uploadfiles/thumb/201607271939462.JPG" alt="立足中原 开放合作
 “直通梅奥国际诊疗中心中原中心”启动"/></a></li>
 
-            <li><a href="http://www.hnsrmyy.net/NewsDetail-8468.html" title="山西省医院自媒体联盟成立了！"><img
+            <li><a href="www.hnsrmyy.net/NewsDetail-8468.html" title="山西省医院自媒体联盟成立了！"><img
                     src="uploadfiles/thumb/201607271939462.jpg" alt="山西省医院自媒体联盟成立了！"/></a></li>
 
-            <li><a href="http://www.hnsrmyy.net/NewsDetail-8472.html" title="“爱心传递 防治出生缺陷”公益行活动走进山西"><img
+            <li><a href="www.hnsrmyy.net/NewsDetail-8472.html" title="“爱心传递 防治出生缺陷”公益行活动走进山西"><img
                     src="uploadfiles/thumb/201607271939462.JPG" alt="“爱心传递 防治出生缺陷”公益行活动走进山西"/></a></li>
 
 
-            <li><a href="http://www.hnsrmyy.net/NewsDetail-7944.html"
+            <li><a href="www.hnsrmyy.net/NewsDetail-7944.html"
                    title="我院空中救护成功转运首位重症患者—首个“中国紧急救援山西航空救援基地”落户省医"><img src="uploadfiles/thumb/2016072719395872.JPG"
                                                                         alt="我院空中救护成功转运首位重症患者—首个“中国紧急救援山西航空救援基地”落户省医"/></a>
             </li>
@@ -879,7 +880,7 @@
 </section>
 
 <section class="NewsBase BaseMark">
-    <div class="tools"><a href="http://www.o2omed.com.cn/" target="_blank"><img src="images/ico_001.gif" class="load"
+    <div class="tools"><a href="www.o2omed.com.cn/" target="_blank"><img src="images/ico_001.gif" class="load"
                                                                                 width="52"
                                                                                 height="52"/><em>互联智慧分诊平台</em></a><a
             href="96195.html"><img src="images/ico_002.gif" class="load" width="52" height="52"/><em><span>96195</span>
@@ -1329,27 +1330,27 @@
         <div class="clear"></div>
         <p> &copy;2015-
             <script language="javascript" type="text/javascript">document.write(new Date().getFullYear());</script>
-            . All Rights Reserved. <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action"
+            . All Rights Reserved. <a href="www.miitbeian.gov.cn/publish/query/indexFirst.action"
                                       target="_blank">备案号0000001 </a></a></p>
         <select id="ddlLinks">
             <option value="0"><span>友情链接</span> HYPERLINK</option>
-            <option value="http://www.chinapop.gov.cn/">中华人民共和国卫生和计划生育委员会</option>
+            <option value="www.chinapop.gov.cn/">中华人民共和国卫生和计划生育委员会</option>
         </select>
     </div>
 </footer>
 <div id="Footer_CodeDiv">
     <script type="text/javascript">
-        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " ");
         document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F4a1d36386e8734a5fd29acec9114818d' type='text/javascript'%3E%3C/script%3E"));
         document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fafd2ae44e23648da4e8a81a7b1349be4' type='text/javascript'%3E%3C/script%3E"));
     </script>
 </div>
-<script language="javascript" type="text/javascript" src="js/Kunyi.Respond.min.js"></script>
-<script language="javascript" type="text/javascript" src="js/KunyiHTML5.min.js"></script>
-<script language="javascript" type="text/javascript" src="js/Kunyilibrary.js"></script>
-<script language="javascript" type="text/javascript" src="js/Kunyi.Init.js"></script>
-<script language="javascript" type="text/javascript" src="js/Kunyi.Common.js"></script>
-<script language="javascript" type="text/javascript" src="js/Kunyi.Index.js"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/Kunyi.Respond.min.js'}"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/KunyiHTML5.min.js'}"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/Kunyilibrary.js'}"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/Kunyi.Init.js'}"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/Kunyi.Common.js'}"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/Kunyi.Index.js'}"></script>
 
 
 </body>

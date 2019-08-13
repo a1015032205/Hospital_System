@@ -14,19 +14,19 @@
     </noscript>
     <!--[if lt IE 7]>
     <meta http-equiv="refresh" content="0; url=/YouLose.htm"/><![endif]-->
-
-    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="css/normalize.css" type="text/css"/>
-    <link rel="stylesheet" href="css/secondary.css" type="text/css"/>
+    <link rel="icon" th:href="@{'/favicon.ico'}" type="image/x-icon"/>
+    <link rel="shortcut icon" th:href="@{'/favicon.ico'}" type="image/x-icon"/>
+    <link rel="stylesheet" th:href="@{'/css/normalize.css'}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{'/css/secondary.css'}" type="text/css"/>
     <!--[if lt IE 9]>
-    <script language="javascript" type="text/javascript" src="js/Kunyi.Respond.min.js"></script><![endif]-->
-    <script language="javascript" type="text/javascript" src="js/KunyiHTML5.min.js"></script>
-    <script language="javascript" type="text/javascript" src="js/Kunyilibrary.js"></script>
+    <script language="javascript" type="text/javascript" th:src="@{'/js/Kunyi.Respond.min.js'}"></script><![endif]-->
+    <script language="javascript" type="text/javascript" th:src="@{'/js/KunyiHTML5.min.js'}"></script>
+    <script language="javascript" type="text/javascript" th:src="@{'/js/Kunyilibrary.js'}"></script>
 </head>
 <body>
 <script language="javascript" type="text/javascript" src="js/Kunyi.Init.js"></script>
 <header>
+    <
     <div class="topHidden"></div>
     <div class="toolBase">
         <div class="BaseMark">
@@ -259,7 +259,7 @@
                                         <dd><em>汽车客运站</em>
                                             <p>40路</p></dd>
                                     </dl>
-                                    <a href="http://map.baidu.com/ target=" _blank">电子地图</a>
+                                    <a href="http://map.baidu.com/ target=' _blank'">电子地图</a>
                                 </div>
                                 <div class="clear"></div>
                             </div>
@@ -1095,8 +1095,8 @@
         document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fafd2ae44e23648da4e8a81a7b1349be4' type='text/javascript'%3E%3C/script%3E"));
     </script>
 </div>
-<script language="javascript" type="text/javascript" src="js/Kunyi.Common.js"></script>
-<script language="javascript" type="text/javascript" src="js/Kunyi.Secondary.js"></script>
-<script language="javascript" type="text/javascript" src="js/Kunyi.News.js"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/Kunyi.Common.js'}"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/Kunyi.Secondary.js'}"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/Kunyi.News.js'}"></script>
 </body>
 </html>
