@@ -1,4 +1,4 @@
-package org.java.ex;
+package org.java.exception;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerExceptionResolver;
