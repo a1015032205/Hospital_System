@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{'/layui/css/layui.css'}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<!--搜索界面 -->
+<Br>
+<div>
+    <div class="layui-inline">
+        <input class="layui-input" name="name" id="name" placeholder="要搜索的姓名"
+               autocomplete="off">
+    </div>
+    <div class="layui-inline">
+        <input class="layui-input" name="clazz" id="clazz"
+               placeholder="要搜索的班级" autocomplete="off">
+    </div>
+    <button class="layui-btn" id="search">搜索</button>
+    <button class="layui-btn" id="reset">重置</button>
+</div>
+<table id="demo" lay-filter="test"></table>
+</body>
+<script type="text/javascript" th:src="@{'/layui/layui.js'}"></script>
+<script type="text/javascript" th:src="@{'/my.js'}"></script>
+<script type="text/html" id="resutlTemplet">
+    {{#  if (d.score > 90) { }}
+    <b style="color:blue"> 优秀 </B>
+    {{#  }else if(d.score>=80){ }}
+    <b style="color: lime">良好</b>
+    {{# }else if(d.score>=60){ }}
+    <b style="color: orange">合格</b>
+    {{#  }else{ }}
+    <b style="color: red">不合格</b>
+    {{#  } }}
+</script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-primary layui-btn-sm" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-sm" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del">删除</a>
+</script>
+<script type="text/html" id="addDemo">
+    <button class="layui-btn  layui-btn-primary" lay-event="add">
+        添加
+    </button>
+</script>
+</html>

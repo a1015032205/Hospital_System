@@ -55,7 +55,7 @@ public class MyDruidConfig {
         initParams.put("loginPassword", loginPassword);
         //默认就是允许所有访问
         initParams.put("allow","");
-        initParams.put("deny","192.168.0.106");
+        initParams.put("deny","192.168.11.12");
 
         bean.setInitParameters(initParams);
         return bean;
