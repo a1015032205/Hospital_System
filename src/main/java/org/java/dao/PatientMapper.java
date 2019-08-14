@@ -2,6 +2,9 @@ package org.java.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.java.entity.Patient;
+
+import java.util.Map;
+
 @Mapper
 public interface PatientMapper {
     int deleteByPrimaryKey(String patientId);
@@ -15,4 +18,11 @@ public interface PatientMapper {
     int updateByPrimaryKeySelective(Patient record);
 
     int updateByPrimaryKey(Patient record);
+
+    /**
+     * 登录
+     * @param map
+     * @return
+     */
+    Map<String, Object> userLogin(Map<String, Object> map);
 }

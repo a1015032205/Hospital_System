@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>登录</title>
+    <link th:href="@{'/layui/css/layui.css'}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{'/css/normalize.css'}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{'/css/index.css'}" type="text/css"/>
+
+</head>
+<body>
+<header>
+    <div class="topHidden"></div>
+    <div class="toolBase">
+        <div class="BaseMark">
+            <ul>
+                <li class="first"><a href="SiteMap.html">站点地图</a></li>
+                <li><a th:href="@{'/1/222'}">院长(信访)信箱</a></li>
+                <li><a th:href="@{'/1/123'}">内部OA</a></li>
+                <li><a th:href="@{'/jump/news'}">人才招聘</a></li>
+                <li><a th:href="@{'/jump/news'}">登录</a></li>
+                <li><a th:href="@{'/jump/news'}">注册</a></li>
+                <li><a th:href="@{'/jump/news'}">退出</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="BaseMark logoBase"><a href="Index.html"><img th:src="@{|/images/logo.jpg|}" class="load" width="227"
+                                                             height="47"/></a>
+
+        <div class="searchBase">
+            <div class="itemBase">
+                <div class="divType" data-state="0">全站内容</div>
+                <ul>
+                    <li data-id="1">全站内容</li>
+                    <li data-id="2">医生查找</li>
+                    <li data-id="3">新闻动态</li>
+                </ul>
+            </div>
+            <form method="get" action="Search.html" onSubmit="return Kunyi.CheckSearchForm()">
+                <input type="hidden" id="Type" name="Type" value="1"/>
+                <input type="text" name="SearchWords" placeholder="请输入您要查找内容的关键字" value="" autocomplete="off"
+                       onFocus="Kunyi.cls(event)" onBlur="Kunyi.res(event)" maxlength="28" id="SearchWords"/>
+                <input type="submit" value="搜索" class="boxsub animated"/>
+            </form>
+        </div>
+    </div>
+</header>
+<center>
+    <form class="layui-form" th:action="@{'/user/login'}" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label">账户</label>
+            <div class="layui-input-block">
+                <input type="text" name="patient_username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-inline">
+                <input type="password" name="patient_pwd" required lay-verify="required" placeholder="请输入密码"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <span style="color: red">[[${error}]]</span>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        //Demo
+        layui.use('form', function () {
+            var form = layui.form;
+
+            //监听提交
+            form.on('submit(formDemo)', function (data) {
+                layer.msg(JSON.stringify(data.field));
+                return false;
+            });
+        });
+    </script>
+</center>
+<footer><img src="../images/ico_036.png" width="35" class="load" height="18" id="QRMark"/>
+    <div class="menusBase">
+        <div class="BaseMark">
+            <dl>
+                <dt><img src="../images/ico_006.jpg" class="load" width="36" height="34"/><em>门诊服务</em><span>outpatient services</span>
+                </dt>
+                <dd><a href="NewsDetail-449.html" title="预约流程" target="_blank">预约流程</a></dd>
+                <dd><a href="NewsDetail-448.html" title="门诊须知" target="_blank">门诊须知</a></dd>
+                <dd><a href="Article-57.html" title="院内导航" target="_blank">院内导航</a></dd>
+            </dl>
+            <dl>
+                <dt><img src="../images/ico_008.jpg" class="load" width="36" height="34"/><em>住院服务</em><span>hospitalized services</span>
+                </dt>
+                <dd><a href="Article-56.html" title="住院须知" target="_blank">住院须知</a></dd>
+                <dd><a href="NewsDetail-461.html" title="检查须知" target="_blank">检查须知</a></dd>
+                <dd><a href="Article-56.html" title="住院清单" target="_blank">住院清单</a></dd>
+            </dl>
+            <dl>
+                <dt><img src="../images/ico_009.jpg" class="load" width="36" height="34"/><em>体检服务</em><span>examination services</span>
+                </dt>
+                <dd><a href="NewsDetail-461.html" title="体检须知" target="_blank">体检须知</a></dd>
+                <dd><a href="NewsDetail-7684.html" title="体检套餐查询" target="_blank">体检套餐查询</a></dd>
+                <dd><a href="CheckupsInfo.html" title="体检报告查询" target="_blank">体检报告查询</a></dd>
+            </dl>
+            <div class="QRBtn"><img src="../images/tempQR.jpg" class="load" width="85" height="85"/>
+                <span>扫描关注官方微信号</span>
+                <a href="javascript:void(0)" id="BtnQRMore">更多二维码</a></div>
+
+            <div class="newsPaper">
+                <div class="npTitle"><img src="../images/ico_010.jpg" class="load" width="28"
+                                          height="39"/><em>省医院报</em><span>内部资料 仅供阅读</span></div>
+                <div class="DChange"><select class="DYear" id="ddlYears">
+                    <option value="0">年份</option>
+                    <option value="2017">2017年</option>
+                    <option value="2016">2016年</option>
+                    <option value="2015">2015年</option>
+                    <option value="2014">2014年</option>
+                </select>
+                    <select class="DTime" id="ddlTimes">
+                        <option value="0">期数</option>
+                    </select></div>
+                <input class="newsPaperBtn animated" name="btnGoNewsPaper" id="btnGoNewsPaper" value="阅览"
+                       type="button"/>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="BottomHidden"></div>
+    <div class="DWeibo"><a href="javascript:;" class="weibo" title="新浪微博">新浪官方微博</a><a href="javascript:;"
+                                                                                       class="tencent" title="腾讯微博">腾讯官方微博</a>
+        <div class="clear"></div>
+    </div>
+
+    <div class="websiteInfo">
+        <div class="info">主办单位：医院标题 &nbsp; &nbsp;综合服务电话：120&nbsp;&nbsp; &nbsp;急救中心电话：120 &nbsp; 传真：120 &nbsp; 地 址：地址地址地址
+            &nbsp;<br/> 版权所有：医院标题
+        </div>
+        <ul>
+            <li class="first"><a href="jianjie.html" target="_blank">关于我们</a></li>
+            <li><a href="Declaration.html" target="_blank">法律声明</a></li>
+            <li><a href="SiteMap.html" target="_blank">网站地图</a></li>
+            <li><a href="Article-57.html" target="_blank">联系我们</a></li>
+            <li><a href="Complain.html" target="_blank">院长(信访)信箱</a></li>
+        </ul>
+        <div class="clear"></div>
+        <p> &copy;2015-
+            <script language="javascript" type="text/javascript">document.write(new Date().getFullYear());</script>
+            . All Rights Reserved. <a href="www.miitbeian.gov.cn/publish/query/indexFirst.action"
+                                      target="_blank">备案号0000001 </a></a></p>
+        <select id="ddlLinks">
+            <option value="0"><span>友情链接</span> HYPERLINK</option>
+            <option value="www.chinapop.gov.cn/">中华人民共和国卫生和计划生育委员会</option>
+        </select>
+    </div>
+</footer>
+<div id="Footer_CodeDiv">
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " ");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F4a1d36386e8734a5fd29acec9114818d' type='text/javascript'%3E%3C/script%3E"));
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fafd2ae44e23648da4e8a81a7b1349be4' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+<script type="text/javascript" th:src="@{'/layui/layui.js'}"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/KunyiHTML5.min.js'}"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/Kunyilibrary.js'}"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/Kunyi.Init.js'}"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/Kunyi.Common.js'}"></script>
+<script language="javascript" type="text/javascript" th:src="@{'/js/Kunyi.Index.js'}"></script>
+
+
+</body>
+</html>

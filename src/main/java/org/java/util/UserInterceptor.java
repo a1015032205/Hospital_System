@@ -14,16 +14,23 @@ import java.util.Map;
  */
 
 public class UserInterceptor implements HandlerInterceptor {
+
+    /**
+     * 前置拦截
+     * 进入控制器之前要执行方法：该方法适合判断，用户是否拥有访问权限，如果有，则进入控制器，如果没有则不进入控制器
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-       /* Map<String, Object> user = (Map<String, Object>) request.getSession().getAttribute("user");
+        //session中，获得user,判断user是否为null,，如果为null，表示用户没有登录，就要进行login.html进行登录
+        Map<String, Object> user = (Map<String, Object>) request.getSession().getAttribute("user");
         if (user == null) {
-            response.sendRedirect("/index");
+            //没有登录
+            //发出请求，重定向到登录的页面
+            response.sendRedirect("/jump/login");
             return false;
         } else {
             return true;
-        }*/
-       return true;
+        }
     }
 
     @Override

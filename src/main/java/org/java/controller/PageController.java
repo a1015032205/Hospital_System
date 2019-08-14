@@ -17,7 +17,7 @@ public class PageController {
      * @param page
      * @return
      */
-    @GetMapping(value = {"jump/{page}"})
+    @GetMapping(value = {"/jump/{page}"})
     public String page(@PathVariable(value = "page") String page) {
         return "/" + page;
     }

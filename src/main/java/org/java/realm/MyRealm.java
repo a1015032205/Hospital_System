@@ -21,6 +21,7 @@ public class MyRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        System.out.println("###########从数据库中加载用户权限#####################");
         return null;
     }
 
@@ -31,7 +32,12 @@ public class MyRealm extends AuthorizingRealm {
      * @throws AuthenticationException
      */
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+
+        //获得用户凭证
+        String principal = token.getPrincipal().toString();
+        //根据用户凭证（用户名）到数据库中，判断用是否存在
+
         return null;
     }
 }

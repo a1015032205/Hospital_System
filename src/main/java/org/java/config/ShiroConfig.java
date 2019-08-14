@@ -23,12 +23,13 @@ import java.util.Map;
 public class ShiroConfig {
 
     /**
-     *  shiro过滤器工厂类
+     * shiro过滤器工厂类
+     *
      * @param securityManager
      * @return
      */
     @Bean
-    public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager){
+    public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
 
         //创建一个shiroFilterFactoryBean对象
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
@@ -36,32 +37,32 @@ public class ShiroConfig {
         //指定，如果要使用的安全管理器
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         //指定，如果用户没有登录，发出什么请求名称，通过控制器，进行到登录界面
-       // shiroFilterFactoryBean.setLoginUrl("/index");
-
+       // shiroFilterFactoryBean.setLoginUrl("/jump/login");
         //指定shiro如何处理拦截的请求名称
         Map filterChainDefinitionsMap = new LinkedHashMap();
-       /* filterChainDefinitionsMap.put("/logout", "logout");
+        filterChainDefinitionsMap.put("/logout", "logout");
         filterChainDefinitionsMap.put("/favicon.ico", "anon");
         filterChainDefinitionsMap.put("/js/**", "anon");
-        filterChainDefinitionsMap.put("/css/**", "anon");*/
-        filterChainDefinitionsMap.put("/**", "anon");
-      //  filterChainDefinitionsMap.put("/index", "anon");
-
-       // filterChainDefinitionsMap.put("", "authc");
-
+        filterChainDefinitionsMap.put("/images/**", "anon");
+        filterChainDefinitionsMap.put("/layui/**", "anon");
+        filterChainDefinitionsMap.put("/pic/**", "anon");
+        filterChainDefinitionsMap.put("/uploadfiles/**", "anon");
+        filterChainDefinitionsMap.put("/css/**", "anon");
+        filterChainDefinitionsMap.put("/user/**", "anon");
+        filterChainDefinitionsMap.put("/jump/**", "anon");
+      //  filterChainDefinitionsMap.put("/**", "authc");
         //把拦截规则，关联到ShiroFilterFactoryBean对象中
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionsMap);
-
-
         return shiroFilterFactoryBean;
     }
 
     /**
      * 指定安全管理器
+     *
      * @return
      */
     @Bean
-    public SecurityManager securityManager(){
+    public SecurityManager securityManager() {
         //创建安全管理器
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         //指定安全管理器，通过哪一个realm类，进行认证、授权
@@ -73,10 +74,11 @@ public class ShiroConfig {
 
     /**
      * 指定realm类
+     *
      * @return
      */
     @Bean
-    public MyRealm myRealm(){
+    public MyRealm myRealm() {
         MyRealm realm = new MyRealm();
         realm.setCredentialsMatcher(credentialsMatcher());
         return realm;
@@ -87,7 +89,7 @@ public class ShiroConfig {
      * @return
      */
     @Bean
-    public CredentialsMatcher credentialsMatcher(){
+    public CredentialsMatcher credentialsMatcher() {
         HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
         //采用md5加密
         hashedCredentialsMatcher.setHashAlgorithmName("md5");
@@ -100,7 +102,7 @@ public class ShiroConfig {
      * 如果要shiro标记在thymeleaf页面生效，需要配置如下方法
      */
     @Bean
-    public ShiroDialect shiroDialect(){
+    public ShiroDialect shiroDialect() {
         return new ShiroDialect();
     }
 
@@ -108,7 +110,7 @@ public class ShiroConfig {
      * 缓存配置
      */
     @Bean
-    public EhCacheManager ehCacheManager(){
+    public EhCacheManager ehCacheManager() {
         EhCacheManager ehCacheManager = new EhCacheManager();
         ehCacheManager.setCacheManagerConfigFile("classpath:shiro-ehcache.xml");
         return ehCacheManager;

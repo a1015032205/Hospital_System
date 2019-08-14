@@ -17,8 +17,9 @@ public class MD5Utils {
      * @param salt 盐值
      * @return
      */
-    public static String getPassword(String password, String salt){
+    public static String getPassword(String password){
         String algorithmName = "md5";
+        String salt = "d102";
         int hashIterations = 3;
         SimpleHash hash = new SimpleHash(algorithmName, password, salt, hashIterations);
         return hash.toString();

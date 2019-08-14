@@ -7,6 +7,9 @@ server:
   tomcat:
     uri-encoding: UTF-8
 spring:
+  resources:
+    #图片所在的位置
+    #static-locations: file:/G:/IDEA/hospital/src/main/resources/static/
   thymeleaf:
     cache: false
     encoding: utf-8
@@ -44,6 +47,8 @@ spring:
   # 可以选择使用@DateTimeFormat
   mvc:
     date-format: yyyy-MM-dd HH:mm:ss
+    #虚拟路径
+    #static-path-pattern: /static/**
   # 可以选择使用@JsonFormat
   jackson:
     time-zone: GMT+8
@@ -78,7 +83,7 @@ spring:
         min-idle: 5
 mybatis:
   mapper-locations: mapper/*Mapper.xml
-  type-aliases-package: org.java.pojo
+  type-aliases-package: org.java.entity
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true

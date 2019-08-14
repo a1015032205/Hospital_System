@@ -17,7 +17,7 @@
     <result column="patient_n" jdbcType="VARCHAR" property="patientN" />
   </resultMap>
   <sql id="Base_Column_List">
-    patient_id, patient_username, patient_pwd, patient_name, patient_gender, patient_tel, 
+    patient_id, patient_username, patient_pwd, patient_name, patient_gender, patient_tel,
     patient_IDcard, prtient_email, patient_area, patient_money, patient_add, patient_e, 
     patient_n
   </sql>
@@ -186,4 +186,8 @@
       patient_n = #{patientN,jdbcType=VARCHAR}
     where patient_id = #{patientId,jdbcType=CHAR}
   </update>
+    <!--用户登录查询-->
+    <select id="userLogin" parameterType="map" resultType="map">
+        select * from patient where patient_username=#{patient_username} and patient_pwd=#{patient_pwd}
+    </select>
 </mapper>
