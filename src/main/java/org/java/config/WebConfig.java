@@ -19,10 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        //跳转到登录页面
-        registry.addViewController("/jump/login").setViewName("/login");
-        //初始前端页面
-        registry.addViewController("/index").setViewName("/index");
+
 
     }
 

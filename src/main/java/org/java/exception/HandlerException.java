@@ -9,18 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * @title: GlobalDefaultHandlerException
- * @author: xiaobing
- * @Description:
+ * @author: 秒度
+ * @Description:全局异常处理
  * @Date: Created in 2019-07-16 16:55
  */
-@ControllerAdvice
+//@ControllerAdvice
 public class HandlerException {
 
-   // private static final Logger LOGGER = LoggerFactory.getLogger(HandlerException.class);
+    // private static final Logger LOGGER = LoggerFactory.getLogger(HandlerException.class);
 
     @ExceptionHandler(value = Exception.class)
-    public String handleException(Exception ex, HttpServletRequest request){
-            return "/error/404";
+    public String handleException(Exception ex, HttpServletRequest request) {
+        String message = ex.getMessage();
+        if (message.equals("用户名不存在") || message.equals("密码错误")) {
+            ShiroException shiroException=new ShiroException();
+        }
+        return "/error/404";
     }
 
 /*    @ExceptionHandler(value = Exception.class)

@@ -33,7 +33,8 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="org.java.dao" targetProject="src/main/java">  
             <property name="enableSubPackages" value="false"/>  
         </javaClientGenerator>
-        <table tableName="%"
+        <table tableName="attendance"
+               domainObjectName="Attendance"
 			   enableCountByExample="false" 
 			   enableUpdateByExample="false" 
 			   enableDeleteByExample="false" 

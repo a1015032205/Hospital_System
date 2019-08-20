@@ -27,11 +27,10 @@ public class UserController {
      */
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
     public String login(@RequestParam Map<String, Object> map, HttpServletRequest request) {
+        //获得前台输入的密码
         String password = map.get("patient_pwd").toString();
-        String patient_pwd = MD5Utils.getPassword(password);
-        System.out.println(patient_pwd);
-        map.remove("patient_pwd");
-        map.put("patient_pwd", patient_pwd);
+        //存入MD5加密后的密码,覆盖原始的值
+        map.put("patient_pwd", MD5Utils.getPassword(password));
         Map<String, Object> user = userService.userLogin(map);
         if (user != null) {
             request.getSession().setAttribute("user", user);

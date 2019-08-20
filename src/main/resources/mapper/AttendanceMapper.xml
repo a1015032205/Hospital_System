@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.java.dao.AttendanceMapper">
+  <resultMap id="BaseResultMap" type="org.java.entity.Attendance">
+    <id column="attendance_id" jdbcType="INTEGER" property="attendanceId" />
+    <result column="attendance_staff" jdbcType="VARCHAR" property="attendanceStaff" />
+    <result column="attendance_start_time" jdbcType="TIMESTAMP" property="attendanceStartTime" />
+    <result column="attendance_end_time" jdbcType="TIMESTAMP" property="attendanceEndTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    attendance_id, attendance_staff, attendance_start_time, attendance_end_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from attendance
+    where attendance_id = #{attendanceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from attendance
+    where attendance_id = #{attendanceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.Attendance">
+    insert into attendance (attendance_id, attendance_staff, attendance_start_time, 
+      attendance_end_time)
+    values (#{attendanceId,jdbcType=INTEGER}, #{attendanceStaff,jdbcType=VARCHAR}, #{attendanceStartTime,jdbcType=TIMESTAMP}, 
+      #{attendanceEndTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.Attendance">
+    insert into attendance
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="attendanceId != null">
+        attendance_id,
+      </if>
+      <if test="attendanceStaff != null">
+        attendance_staff,
+      </if>
+      <if test="attendanceStartTime != null">
+        attendance_start_time,
+      </if>
+      <if test="attendanceEndTime != null">
+        attendance_end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="attendanceId != null">
+        #{attendanceId,jdbcType=INTEGER},
+      </if>
+      <if test="attendanceStaff != null">
+        #{attendanceStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="attendanceStartTime != null">
+        #{attendanceStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attendanceEndTime != null">
+        #{attendanceEndTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.Attendance">
+    update attendance
+    <set>
+      <if test="attendanceStaff != null">
+        attendance_staff = #{attendanceStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="attendanceStartTime != null">
+        attendance_start_time = #{attendanceStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attendanceEndTime != null">
+        attendance_end_time = #{attendanceEndTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where attendance_id = #{attendanceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.Attendance">
+    update attendance
+    set attendance_staff = #{attendanceStaff,jdbcType=VARCHAR},
+      attendance_start_time = #{attendanceStartTime,jdbcType=TIMESTAMP},
+      attendance_end_time = #{attendanceEndTime,jdbcType=TIMESTAMP}
+    where attendance_id = #{attendanceId,jdbcType=INTEGER}
+  </update>
+</mapper>

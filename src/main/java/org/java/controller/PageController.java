@@ -14,11 +14,23 @@ public class PageController {
 
     /**
      * 前端页面跳转
+     *
      * @param page
      * @return
      */
     @GetMapping(value = {"/jump/{page}"})
     public String page(@PathVariable(value = "page") String page) {
         return "/" + page;
+    }
+
+    /**
+     * 后台页面跳转
+     *
+     * @param page
+     * @return
+     */
+    @GetMapping(value = {"/oa/{page}"})
+    public String oa(@PathVariable(value = "page") String page) {
+        return "/background/" + page;
     }
 }

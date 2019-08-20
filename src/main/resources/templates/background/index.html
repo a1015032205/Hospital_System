@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Title</title>
+    <title>OA</title>
     <link th:href="@{'/layui/css/layui.css'}" type="text/css" rel="stylesheet">
 </head>
 <body class="layui-layout-body">
 
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">layui 后台布局</div>
+        <div class="layui-logo">医院后台OA系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="">控制台</a></li>
@@ -28,8 +28,8 @@
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    贤心
+                    <img src="images/doctor/doctor1.jpg" class="layui-nav-img">
+                    用户名
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="">基本资料</a></dd>
@@ -45,24 +45,95 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">功能一</a>
+                    <a class="" href="javascript:;">个人中心</a>
                     <dl class="layui-nav-child">
-                        <dd><a th:href="@{'/jump/one'}" target="right">流程1</a></dd>
-                        <dd><a th:href="@{'/jump/two'}" target="right">流程2</a></dd>
+                        <dd><a th:href="@{'/oa/one'}" target="right">打卡</a></dd>
+                        <dd><a th:href="@{'/oa/two'}" target="right"></a></dd>
                         <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">考勤管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href=""  target="right">我要请假</a></dd>
+                        <dd><a href=""  target="right">我的请假</a></dd>
+                        <dd><a href=""  target="right">请假统计</a></dd>
+                        <dd><a href=""  target="right"><考勤统计></考勤统计></a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">财务管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href=""  target="right">工资信息</a></dd>
+                        <dd><a href=""  target="right">按月查询</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">工作流程</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href=""  target="right">启动流程</a></dd>
+                        <dd><a href=""  target="right">待办事宜</a></dd>
+                        <dd><a href=""  target="right">流程监控</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">报表管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href=""  target="right">报表查看</a></dd>
+                        <dd><a href=""  target="right">新建报表</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="" href="javascript:;">门诊管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="" target="right">门诊挂号查看</a></dd>
+                        <dd><a href="javascript:;" target="right">患者信息查看</a></dd>
+                        <dd><a href="" target="right">门诊医生信息</a></dd>
+                        <dd><a href="" target="right">查看咨询</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
+                    <a href="javascript:;">药房管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
+                        <dd><a th:href="@{'/for/drug'}"  target="right">药品详情</a></dd>
+                        <dd><a href="" target="right">药库详情</a></dd>
+                        <dd><a th:href="@{'/for/chinese_medicine'}" target="right">中药详情</a></dd>
+                        <dd><a th:href="@{'/for/western_medicine'}" target="right">西药详情</a></dd>
+                        <dd><a href=""  target="right">发起采购</a></dd>
+                        <dd><a href=""  target="right">出库统计</a></dd>
+                        <dd><a href=""  target="right">入库统计</a></dd>
+                        <dd><a th:href="@{'/for/supplier'}"  target="right">供应商信息</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
-                <li class="layui-nav-item"><a href="">自定义</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">住院管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="" target="right">办理入院信息</a></dd>
+                        <dd><a href=""  target="right">房间管理</a></dd>
+                        <dd><a href=""  target="right">床位管理</a></dd>
+                        <dd><a href=""  target="right">住院患者信息</a></dd>
+                        <dd><a href=""  target="right">出院患者信息</a></dd>
+                        <dd><a href=""  target="right">费用查询</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">权限管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="" target="right">角色管理</a></dd>
+                        <dd><a href=""  target="right">用户管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">系统管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{'/for/updategw'}" target="right">修改官网医生信息</a></dd>
+                        <dd><a th:href="@{'/for/update_his'}" target="right">修改官网医院信息</a></dd>
+                        <dd><a th:href="@{'/for/update_bm'}" target="right">修改官网部门信息</a></dd>
+                        <dd><a th:href="@{'/for/update_ks'}" target="right">修改官网科室信息</a></dd>
+                        <dd><a href="javascript:;" target="right">查看医院内部数据</a></dd>
+                        <dd><a href="javascript:;" target="right">查看投诉列表</a></dd>
+                    </dl>
+                </li>
             </ul>
         </div>
     </div>
@@ -70,13 +141,13 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <iframe th:src="@{'/jump/right'}" name="right" style="width: 100%;height: 100% " frameborder="0"></iframe>
+            <iframe th:src="@{'/oa/right'}" name="right" style="width: 100%;height: 100% " frameborder="0"></iframe>
         </div>
     </div>
 
     <div class="layui-footer">
         <!-- 底部固定区域 -->
-        © layui.com - 底部固定区域
+
     </div>
 </div>
 </body>

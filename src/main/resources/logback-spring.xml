@@ -22,7 +22,7 @@
         </layout>
     </appender>
 
-    <logger name="org.java.oa" level="debug" additivity="false"/>
+    <logger name="org.java" level="debug" additivity="false"/>
 
     <root level="info">
         <appender-ref ref="stdout" />

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class ShiroException implements HandlerExceptionResolver {
     @Override
-    public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
+    public  ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
         //获得异常信息
         String msg = e.getMessage();
         //创建modelAndView
@@ -23,4 +23,5 @@ public class ShiroException implements HandlerExceptionResolver {
         mv.addObject("msg", msg);
         return mv;
     }
+
 }
