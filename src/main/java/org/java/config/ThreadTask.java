@@ -2,6 +2,7 @@ package org.java.config;
 
 import org.mybatis.logging.Logger;
 import org.mybatis.logging.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -22,7 +23,7 @@ public class ThreadTask {
 
     SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
 
-    //@Async(value = "myAsyncPool")
+    @Async(value = "myAsyncPool")
     public void testTask(int i) throws Exception {
         System.out.println(Thread.currentThread().getName() + "--" + i + "--时间：" + format.format(new Date()));
         Thread.sleep(3000);

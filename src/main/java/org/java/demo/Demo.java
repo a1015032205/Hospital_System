@@ -20,7 +20,9 @@ public class Demo {
         map();
     }
 
+
     public static void map() {
+
         Map<String, Object> map = new HashMap<>(16);
         map.put("name","jack");
         map.put("name","andy");

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Description:全局异常处理
  * @Date: Created in 2019-07-16 16:55
  */
-//@ControllerAdvice
+@ControllerAdvice
 public class HandlerException {
 
     // private static final Logger LOGGER = LoggerFactory.getLogger(HandlerException.class);
@@ -22,9 +22,11 @@ public class HandlerException {
     public String handleException(Exception ex, HttpServletRequest request) {
         String message = ex.getMessage();
         if (message.equals("用户名不存在") || message.equals("密码错误")) {
-            ShiroException shiroException=new ShiroException();
+            ShiroException shiroException = new ShiroException();
+            return null;
+        } else {
+            return "/error/404";
         }
-        return "/error/404";
     }
 
 /*    @ExceptionHandler(value = Exception.class)

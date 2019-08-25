@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * @Author: 马果
  * @Date: 2019/7/28 10:16
- * @Description:
+ * @Description: shrio配置类
  */
 @Configuration
 public class ShiroConfig {
@@ -49,8 +49,12 @@ public class ShiroConfig {
         filterChainDefinitionsMap.put("/pic/**", "anon");
         filterChainDefinitionsMap.put("/background/**", "anon");
         filterChainDefinitionsMap.put("/jump/index", "anon");
+        filterChainDefinitionsMap.put("/jump/reg", "anon");
+        filterChainDefinitionsMap.put("/jump/login", "anon");
         filterChainDefinitionsMap.put("/oa/login", "anon");
-        filterChainDefinitionsMap.put("/**", "authc");
+        filterChainDefinitionsMap.put("/hospital/**", "anon");
+        filterChainDefinitionsMap.put("/**", "anon");
+        //filterChainDefinitionsMap.put("/**", "authc");
         //把拦截规则，关联到ShiroFilterFactoryBean对象中
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionsMap);
         return shiroFilterFactoryBean;

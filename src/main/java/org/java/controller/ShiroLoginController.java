@@ -20,7 +20,7 @@ import java.util.Map;
 public class ShiroLoginController {
 
     /**
-     * 只有为登录或者登录失败会进此方法
+     * 只有未登录或者登录失败会进此方法
      *
      * @param request
      * @return

@@ -1,4 +1,4 @@
-package org.java.controller;
+package org.java.util;
 
 import com.alibaba.fastjson.JSON;
 import com.baidu.aip.util.Base64Util;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,27 +25,28 @@ import java.util.Map;
  * 扫描身份证
  */
 @Controller
-public class OcrController {
+public class OcrUtil {
     // 身份证识别url
     final static String idcardIdentificate = "https://aip.baidubce.com/rest/2.0/ocr/v1/idcard";
 
 
     /**
      * 扫描身份证正面信息
+     *
      * @param model
      * @param myfile
      * @param request
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = {"/id"})
-    public String ID(Model model, @RequestParam(value = "myfile") MultipartFile myfile, HttpServletRequest request) throws Exception {
+    public static Map<String, Object> getIdCard(@RequestParam(value = "myfile") MultipartFile myfile, HttpServletRequest request) throws Exception {
         //String filePath = myfile.getOriginalFilename();
         String fileName = myfile.getOriginalFilename();
         String path = request.getSession().getServletContext().getRealPath("upload");
         //文件为空则失败
         if (myfile.isEmpty()) {
-            return "/err";
+            System.out.println("没有文件上传");
+            return null;
         } else {
             //获得上传的文件名称
             //在指定目录中，产生一个指定名称的新文件（文件是空的，没有内容）
@@ -67,9 +69,6 @@ public class OcrController {
         //#####调用鉴权接口获取的token#####
         String accessToken = AuthService.getAuth();
         String result = HttpUtil.post(idcardIdentificate, accessToken, params);
-
-        System.out.println(result);
-
         Map<String, Object> map = JSON.parseObject(result);
         Map<String, Object> m = (Map<String, Object>) map.get("words_result");
         String name = (String) ((Map<String, Object>) m.get("姓名")).get("words");
@@ -98,8 +97,8 @@ public class OcrController {
                     System.out.print("\n");
                 }
             }*/
-        model.addAttribute("map", info);
-        return "/show";
+        //  model.addAttribute("map", info);
+        return info;
     }
 
     public static int getGray(Color pixel) {

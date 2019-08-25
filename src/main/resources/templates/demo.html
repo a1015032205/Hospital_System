@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>支持6种放大模式的jQuery图片放大镜插件|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+
+</head>
+<body>
+<script th:src="@{'/js/jquery.min.js'}"></script>
+<script th:src="@{'/js/img-big/prettify.js'}"></script>
+<script th:src="@{'/js/img-big/zoomsl.min.js'}"></script>
+<script th:src="@{'/js/img-big/main.js'}"></script>
+<img class="demo4" th:src="@{|/images/upload.jpg|}"  title="Фото">
+<div class="my-container"></div>
+<script>
+    jQuery(function () {
+        $('.demo4').imagezoomsl({
+            descarea: '.my-container',
+            zoomrange: [1, 12],
+            magnifiereffectanimate: 'fadeIn',
+            magnifierborder: 'none'
+        });
+    });
+</script>
+</body>
+</html>
