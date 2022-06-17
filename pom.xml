@@ -34,7 +34,7 @@
         <thymeleaf-extras-shiro.version>2.0.0</thymeleaf-extras-shiro.version>
         <ehcache-core.version>2.4.8</ehcache-core.version>
         <pagehelper-spring-boot-starter.version>1.2.5</pagehelper-spring-boot-starter.version>
-        <fastjson.version>1.2.54</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <com-baidu-aip.version>4.11.3</com-baidu-aip.version>
         <itextpdf.version>5.3.0</itextpdf.version>
         <alipay-sdk-java.version>3.7.4.ALL</alipay-sdk-java.version>
