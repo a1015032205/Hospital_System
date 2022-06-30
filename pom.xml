@@ -36,7 +36,7 @@
         <pagehelper-spring-boot-starter.version>1.2.5</pagehelper-spring-boot-starter.version>
         <fastjson.version>1.2.54</fastjson.version>
         <com-baidu-aip.version>4.11.3</com-baidu-aip.version>
-        <itextpdf.version>5.3.0</itextpdf.version>
+        <itextpdf.version>5.5.12</itextpdf.version>
         <alipay-sdk-java.version>3.7.4.ALL</alipay-sdk-java.version>
         <aliyun-java-sdk-core.version>4.1.0</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-dysmsapi.version>1.1.0</aliyun-java-sdk-dysmsapi.version>
